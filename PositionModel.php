@@ -145,6 +145,7 @@ class PositionModel extends \yii\db\ActiveRecord {
                 $_positions[] = $position;
             }
         }
+        return $_positions;
     }
 
     public static function find() {
