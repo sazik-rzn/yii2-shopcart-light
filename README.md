@@ -6,6 +6,8 @@ installation:
 "sazik-rzn/yii2-shopcart-light": "*"
 
 2) append migration from folder "migrations" 
+./yii migrate/up --migrationPath=@vendor/sazik-rzn/yii2-shopcart-light/migrations
+
 
 3) Implemet IPositionModel by yor product model
 
