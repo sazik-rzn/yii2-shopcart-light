@@ -5,7 +5,6 @@
     "homepage": "https://github.com/sazik-rzn/yii2-shopcart-light",
     "type": "yii2-extension",
     "license": "BSD-3-Clause",
-    "minimum-stability": "dev",
     "authors": [
         {
             "name": "Vladimir Sazonov",
