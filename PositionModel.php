@@ -148,7 +148,7 @@ class PositionModel extends \yii\db\ActiveRecord {
     }
 
     public static function find() {
-        parent::find();
+        return parent::find();
     }
 
 }
