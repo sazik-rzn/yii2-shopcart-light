@@ -105,6 +105,14 @@ class Shopcart extends \yii\base\Component {
         }
         return null;
     }
+    
+    /**
+     * Get all positions
+     * @return array
+     */
+    public function getPositions(){
+        return $this->postions;
+    }
 
     /**
      * Add or update position
@@ -132,6 +140,13 @@ class Shopcart extends \yii\base\Component {
             unset($this->postions[$position_id]);
         }
     }
+    
+    public function clear(){
+        foreach ($this->postions as $position){
+            $position->delete();
+        }
+        $this->reload();
+    }
 
     /**
      * Update position count by ID
@@ -139,6 +154,7 @@ class Shopcart extends \yii\base\Component {
      * @param int $count
      * @param boolean $direction - true is countUp or false is countDown
      * @param boolean $hard - hard set count
+     * @return PositionModel|boolean 
      */
     public function update($id, $count, $direction, $hard = false) {
         if (isset($this->postions[$id])) {
@@ -151,7 +167,9 @@ class Shopcart extends \yii\base\Component {
             } else {
                 $this->postions[$id]->setCount($count);
             }
+            return $this->postions[$id];
         }
+        return false;
     }
 
     /**
@@ -185,6 +203,10 @@ class Shopcart extends \yii\base\Component {
         $postions = PositionModel::Magic($this->model_class_name, $this->user_id, $this->cookie_value);
         $this->postions = [];
         foreach ($postions as $position) {
+            if(!$position->getModel()){
+                $position->rm();
+                continue;
+            }
             if ($position->user_id == null && $this->user_id) {
                 $position->user_id = $this->user_id;
                 $position->save();
