@@ -67,6 +67,7 @@ class PositionModel extends \yii\db\ActiveRecord {
         if ($count > 0) {
             $this->count = $count;
             $this->save();
+            return true;
         }
         return $this->rm();
     }
