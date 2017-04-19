@@ -106,6 +106,11 @@ class Shopcart extends \yii\base\Component {
         return null;
     }
     
+    /**
+     * Search position by model`s ID
+     * @param int $model_id
+     * @return PositionModel
+     */
     public function hasPosition($model_id){
         return PositionModel::checkByModelID($model_id, $this->user_id, $this->cookie_value);
     }
