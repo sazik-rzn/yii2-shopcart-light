@@ -108,7 +108,7 @@ class PositionModel extends \yii\db\ActiveRecord {
         return false;
     }
 
-    private static function checkByModelID($model_id, $user_id = false, $cookie_key = false) {
+    public static function checkByModelID($model_id, $user_id = false, $cookie_key = false) {
         $positions = self::find()->andWhere(['model_id' => $model_id]);
         if ($user_id && !$cookie_key) {
             $positions = $positions->andWhere(['user_id' => $user_id]);
