@@ -35,6 +35,7 @@ class PositionModel extends \yii\db\ActiveRecord {
         if ($this->model_class_name) {
             $object = \Yii::createObject($this->model_class_name);
             if ($object instanceof IPositionModel) {
+                $class_name = $this->model_class_name;
                 $position_model = $class_name::getByID($this->model_id);
                 if ($position_model instanceof IPositionModel) {
                     $this->model = $position_model;
