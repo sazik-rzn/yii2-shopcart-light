@@ -78,7 +78,7 @@ class Shopcart extends \yii\base\Component {
         \Yii::$app->response->cookies->add(new \yii\web\Cookie([
             'name' => $this->cookie_name,
             'value' => $this->cookie_value,
-            'expire' => 60 * 60 * 24 * 365
+            'expire' => time() + 60 * 60 * 24 * 365
         ]));
     }
 
