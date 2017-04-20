@@ -116,7 +116,7 @@ class PositionModel extends \yii\db\ActiveRecord {
             $positions = $positions->andWhere(['cookie_key' => $cookie_key]);
         }
         elseif($user_id && $cookie_key){
-            $positions = $positions->andWhere("user_id={$user_id} OR cookie_key={$cookie_key}");
+            $positions = $positions->andWhere("user_id={$user_id} OR cookie_key='{$cookie_key}'");
         }
         else {
             return null;
@@ -132,7 +132,7 @@ class PositionModel extends \yii\db\ActiveRecord {
             $positions = $positions->andWhere(['cookie_key' => $cookie_key]);
         }
         elseif($user_id && $cookie_key){
-            $positions = $positions->andWhere("user_id={$user_id} OR cookie_key={$cookie_key}");
+            $positions = $positions->andWhere("user_id={$user_id} OR cookie_key='{$cookie_key}'");
         }
         return $positions->all();
     }
