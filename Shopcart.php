@@ -74,7 +74,7 @@ class Shopcart extends \yii\base\Component {
      * Set cookie key
      */
     private function setCookie() {
-        $this->cookie_value = md5(time() . $_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT']);
+        $this->cookie_value = md5(time() . $_SERVER['REMOTE_ADDR'] . md5(time() . $_SERVER['REMOTE_ADDR']));
         \Yii::$app->response->cookies->add(new \yii\web\Cookie([
             'name' => $this->cookie_name,
             'value' => $this->cookie_value,
